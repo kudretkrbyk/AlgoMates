@@ -4,12 +4,14 @@ const sequelize = require("./config/db.js");
 const dummyData = require("./data/dummy-data");
 
 const authRoutes = require("./routes/authRoutes.js");
+const { projectsRoutes } = require("./routes/projectsRoutes.js");
 
 const app = express();
 
 app.use(express.json());
 
 app.use("/api", authRoutes);
+app.use("/api/projects", projectsRoutes);
 
 (async () => {
   await sequelize.sync({ force: true });
