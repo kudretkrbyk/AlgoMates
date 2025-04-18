@@ -1,20 +1,24 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-const Users = sequelize.define(
-  "users",
+const Contact = sequelize.define(
+  "contact",
   {
-    username: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    userpassword: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    isadmin: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
+    message: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    subject: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
   },
   {
@@ -22,4 +26,4 @@ const Users = sequelize.define(
   }
 );
 
-module.exports = Users;
+module.exports = Contact;

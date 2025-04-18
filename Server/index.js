@@ -1,7 +1,8 @@
+require("dotenv").config(); // En üstte olsun
 const express = require("express");
+const sequelize = require("./config/db.js");
+const dummyData = require("./data/dummy-data");
 
-const dotenv = require("dotenv");
-dotenv.config();
 const authRoutes = require("./routes/authRoutes.js");
 
 const app = express();
@@ -9,6 +10,11 @@ const app = express();
 app.use(express.json());
 
 app.use("/api", authRoutes);
+
+(async () => {
+  await sequelize.sync({ force: true });
+  await dummyData();
+})();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
