@@ -110,9 +110,13 @@ const projectSlice = createSlice({
       })
 
       // FETCH BY ID
+      .addCase(fetchProjectById.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(fetchProjectById.fulfilled, (state, action) => {
         state.project = action.payload;
         state.isSuccess = true;
+        state.isLoading = false;
       })
 
       // ADD
