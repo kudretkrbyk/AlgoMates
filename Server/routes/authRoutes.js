@@ -46,7 +46,7 @@ router.post(
   login
 );
 
-router.get("/denemetablo", verifyToken, (req, res) => {
+router.get("/login", verifyToken, (req, res) => {
   res.json({ message: "Access to denemetablo granted!", user: req.user });
 });
 
