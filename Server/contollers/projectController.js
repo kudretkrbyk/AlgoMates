@@ -2,6 +2,7 @@ const Project = require("../models/projects");
 const { sanityFunction } = require("../middleware/sanityFunction");
 
 const getAll = async (req, res) => {
+  console.log("getAll çalıştı");
   try {
     const response = await Project.findAll();
     console.log(response);

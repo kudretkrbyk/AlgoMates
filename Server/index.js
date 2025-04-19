@@ -1,5 +1,6 @@
 require("dotenv").config(); // En üstte olsun
 const express = require("express");
+const cors = require("cors");
 const sequelize = require("./config/db.js");
 const dummyData = require("./data/dummy-data");
 
@@ -8,6 +9,7 @@ const { projectsRoutes } = require("./routes/projectsRoutes.js");
 const { contactRoutes } = require("./routes/contactRoutes.js");
 
 const app = express();
+app.use(cors()); // 🔥 tüm origin'lere izin verir
 
 app.use(express.json());
 
