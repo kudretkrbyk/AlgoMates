@@ -1,8 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllProjects } = require("../contollers/projectController");
-router.get("/", getAllProjects);
+const {
+  getAll,
+  deleteById,
+  getById,
+  addData,
+  updateById,
+} = require("../contollers/projectController");
+router.get("/", getAll).post("/", addData);
+router.get("/:id", getById).put("/:id", updateById).delete("/:id", deleteById);
 
 module.exports = {
   projectsRoutes: router,

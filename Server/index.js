@@ -14,8 +14,8 @@ app.use("/api", authRoutes);
 app.use("/api/projects", projectsRoutes);
 
 (async () => {
-  await sequelize.sync({ force: true });
-  await dummyData();
+  await sequelize.sync({ alter: true });
+  //await dummyData();
 })();
 
 const PORT = process.env.PORT || 3000;
