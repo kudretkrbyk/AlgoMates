@@ -12,7 +12,7 @@ const sendEmail = async ({ name, email, subject, message }) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER, // kendine gönderiyorsun (info@ gibi)
+    to: process.env.EMAIL_USERTO, // kendine gönderiyorsun (info@ gibi)
     subject: `İletişim Formu - ${subject}`,
     html: `
       <h3>Yeni iletişim mesajı</h3>

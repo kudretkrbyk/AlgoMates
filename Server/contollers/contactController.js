@@ -1,5 +1,6 @@
 const Contact = require("../models/contact");
 const { sanityFunction } = require("../middleware/sanityFunction");
+const sendEmail = require("../utils/sendEmail");
 
 const getAll = async (req, res) => {
   try {
@@ -24,7 +25,7 @@ const addData = async (req, res) => {
         message: "lütfen geçerli veriler ile tekrar deneyiniz!!",
       });
     }
-    //await sendEmail({ name, email, subject, message });
+    await sendEmail({ name, email, subject, message });
 
     const response = await Contact.create({
       name: name,
