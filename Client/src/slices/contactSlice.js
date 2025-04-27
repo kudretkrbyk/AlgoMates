@@ -1,155 +1,103 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../api/axiosIntance"; // token'lı axios burada olsun
 
-const API_URL = "/contacts";
+const API_URL = "http://localhost:5000/api/contacts";
 
 const initialState = {
-  contacts: [],
-  contact: {},
-  isLoading: false,
+  contactTable: [],
+  editContact: {},
   isError: false,
+  isLoading: false,
   isSuccess: false,
+  isUpdate: false,
   message: "",
 };
 
-// GET ALL
-export const fetchContacts = createAsyncThunk(
-  "contacts/fetchAll",
+export const getAllContact = createAsyncThunk(
+  "contact/getAllContact",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get(API_URL);
-      return res.data;
+      const response = await axios.get(API_URL);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "Proje listesi alınamadı."
+        error.response?.data?.message || error.message
       );
     }
   }
 );
 
-// GET BY ID
-export const fetchContactById = createAsyncThunk(
-  "contacts/fetchById",
+export const getContactById = createAsyncThunk(
+  "contact/getContactById",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.get(`${API_URL}/${id}`);
-      return res.data;
+      const response = await axios.get(`${API_URL}/${id}`);
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue("Proje bulunamadı.", error);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || error.message
+      );
     }
   }
 );
 
-// ADD
 export const addContact = createAsyncThunk(
-  "contact/add",
+  "contact/addContact",
   async (data, thunkAPI) => {
     try {
-      const res = await axios.post(API_URL, data);
-      return res.data;
+      const response = await axios.post(API_URL, data);
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue("Proje ekleme başarısız.", error);
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message || error.message
+      );
     }
   }
 );
 
-// UPDATE
-export const updateContact = createAsyncThunk(
-  "contacts/update",
-  async (data, thunkAPI) => {
-    try {
-      const res = await axios.put(`${API_URL}/${data.id}`, data);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue("Proje güncelleme başarısız.", error);
-    }
-  }
-);
-
-// DELETE
-export const deleteContact = createAsyncThunk(
-  "contacts/delete",
-  async (id, thunkAPI) => {
-    try {
-      await axios.delete(`${API_URL}/${id}`);
-      return id;
-    } catch (error) {
-      return thunkAPI.rejectWithValue("Proje silinemedi.", error);
-    }
-  }
-);
-
-const contactSlice = createSlice({
-  name: "contacts",
+export const contactSlice = createSlice({
+  name: "contact",
   initialState,
   reducers: {
     resetContactState: (state) => {
       state.isLoading = false;
-      state.isError = false;
       state.isSuccess = false;
+      state.isError = false;
       state.message = "";
-      state.project = {};
+      state.editContact = {};
     },
   },
   extraReducers: (builder) => {
     builder
-      // FETCH ALL
-      .addCase(fetchContacts.pending, (state) => {
+      .addCase(getAllContact.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchContacts.fulfilled, (state, action) => {
+      .addCase(getAllContact.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.projects = action.payload;
+        state.contactTable = action.payload;
         state.isSuccess = true;
       })
-      .addCase(fetchContacts.rejected, (state, action) => {
+      .addCase(getAllContact.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
 
-      // FETCH BY ID
-      .addCase(fetchContactById.fulfilled, (state, action) => {
-        state.project = action.payload;
-        state.isSuccess = true;
+      .addCase(addContact.pending, (state) => {
+        state.isLoading = true;
       })
-
-      // ADD
       .addCase(addContact.fulfilled, (state, action) => {
-        state.projects.push(action.payload);
+        state.isLoading = false;
         state.isSuccess = true;
+        state.contactTable.push(action.payload); // yeni contact ekleniyor
       })
-
-      // UPDATE
-      .addCase(updateContact.fulfilled, (state, action) => {
-        const index = state.projects.findIndex(
-          (p) => p.id === action.payload.id
-        );
-        if (index !== -1) state.projects[index] = action.payload;
-        state.isSuccess = true;
-      })
-
-      // DELETE
-      .addCase(deleteContact.fulfilled, (state, action) => {
-        state.projects = state.projects.filter((p) => p.id !== action.payload);
-        state.isSuccess = true;
-      })
-
-      // Hata durumları
       .addCase(addContact.rejected, (state, action) => {
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(updateContact.rejected, (state, action) => {
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(deleteContact.rejected, (state, action) => {
+        state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       });
   },
 });
 
-export const { resetProjectState } = contactSlice.actions;
+export const { resetContactState } = contactSlice.actions;
 export default contactSlice.reducer;

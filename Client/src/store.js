@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-import projectSlcie from "./slices/projectSlice";
+import projectSlice from "./slices/projectSlice";
 import contactSlice from "./slices/contactSlice";
 
 export const store = configureStore({
   reducer: {
-    projects: projectSlcie,
-    contacts: contactSlice,
+    projects: projectSlice,
+    contact: contactSlice, // ✅ doğru isim (state.contact olarak kullanılıyor)
   },
 });

@@ -24,6 +24,7 @@ const addData = async (req, res) => {
         message: "lütfen geçerli veriler ile tekrar deneyiniz!!",
       });
     }
+    //await sendEmail({ name, email, subject, message });
 
     const response = await Contact.create({
       name: name,

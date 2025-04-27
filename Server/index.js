@@ -15,10 +15,10 @@ app.use(express.json());
 
 app.use("/api", authRoutes);
 app.use("/api/projects", projectsRoutes);
-app.use("/api/contact", contactRoutes);
+app.use("/api/contacts", contactRoutes);
 
 (async () => {
-  await sequelize.sync({ alter: true });
+  await sequelize.sync({ alter: true }); // { force: true } yapma, verileri siler
   //await dummyData();
 })();
 
