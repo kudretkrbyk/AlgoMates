@@ -18,8 +18,8 @@ app.use("/api/projects", projectsRoutes);
 app.use("/api/contacts", contactRoutes);
 
 (async () => {
-  await sequelize.sync({ alter: true }); // { force: true } yapma, verileri siler
-  //await dummyData();
+  await sequelize.sync({ force: true }); // { force: true } yapma, verileri siler
+  await dummyData();
 })();
 
 const PORT = process.env.PORT || 3000;
