@@ -6,11 +6,12 @@ const getAll = async (req, res) => {
   try {
     const response = await Project.findAll();
     console.log(response);
-    res.send(response);
+    return res.send(response);
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
+
 const addData = async (req, res) => {
   try {
     let { title, tag, description, image, liveview, github } = req.body;
@@ -20,6 +21,7 @@ const addData = async (req, res) => {
     const s_image = sanityFunction(image);
     const s_liveview = sanityFunction(liveview);
     const s_github = sanityFunction(github);
+
     if (
       !s_title ||
       !s_tag ||
@@ -28,116 +30,122 @@ const addData = async (req, res) => {
       !s_liveview ||
       !s_github
     ) {
-      res.send({
+      return res.status(400).send({
         success: false,
-        message: "lütfen geçerli veriler ile tekrar deneyiniz!!",
+        message: "Lütfen geçerli veriler ile tekrar deneyiniz!!",
       });
     }
 
     const response = await Project.create({
-      title: title,
-      tag: tag,
-      description: description,
-      image: image,
-      liveview: liveview,
-      github: github,
+      title,
+      tag,
+      description,
+      image,
+      liveview,
+      github,
     });
 
-    res.send(response);
+    return res.status(201).send(response);
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
+
 const getById = async (req, res) => {
   try {
     let id = req.params.id;
     const s_id = sanityFunction(id);
     if (!s_id) {
-      res.send({ success: false, message: "lütfen geçerli bir id giriniz" });
+      return res
+        .status(400)
+        .send({ success: false, message: "Lütfen geçerli bir ID giriniz" });
     }
 
     const response = await Project.findByPk(id);
-    res.send(response);
+    if (!response) {
+      return res
+        .status(404)
+        .send({ success: false, message: "Proje bulunamadı" });
+    }
+
+    return res.send(response);
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
+
 const updateById = async (req, res) => {
   try {
     let id = req.params.id;
     const s_id = sanityFunction(id);
     let { title, tag, description, image, liveview, github } = req.body;
-    const s_adisoyadi = sanityFunction(adiSoyadi);
-    const s_tcKimlikNo = sanityFunction(tcKimlikNo);
-    const s_telefon = sanityFunction(telefon);
-    const s_adres = sanityFunction(adres);
-    const s_referans = sanityFunction(referans);
+
+    const s_title = sanityFunction(title);
+    const s_tag = sanityFunction(tag);
+    const s_description = sanityFunction(description);
+    const s_image = sanityFunction(image);
+    const s_liveview = sanityFunction(liveview);
+    const s_github = sanityFunction(github);
+
     if (
       !s_id ||
-      !s_adisoyadi ||
-      !s_tcKimlikNo ||
-      !s_telefon ||
-      !s_adres ||
-      !s_referans
+      !s_title ||
+      !s_tag ||
+      !s_description ||
+      !s_image ||
+      !s_liveview ||
+      !s_github
     ) {
-      res.send({
+      return res.status(400).send({
         success: false,
-        message: "lütfen geçerli veriler ile tekrar deneyiniz!!",
+        message: "Lütfen geçerli veriler ile tekrar deneyiniz!!",
       });
     }
 
     const response = await Project.update(
-      {
-        title: title,
-        tag: tag,
-        description: description,
-        image: image,
-        liveview: liveview,
-        github: github,
-      },
-      {
-        where: { id: id },
-      }
+      { title, tag, description, image, liveview, github },
+      { where: { id: s_id } }
     );
+
     if (response[0] === 0) {
-      // Bu bir "iş kuralı" kontrolüdür (örneğin: böyle bir kayıt yok)
       return res
         .status(404)
         .send({ success: false, message: "Kayıt bulunamadı" });
     }
 
-    res.send({ success: true, message: ` id=${id}, değer güncellendi` });
+    return res.send({ success: true, message: `id=${id}, değer güncellendi` });
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
+
 const deleteById = async (req, res) => {
   try {
     let id = req.params.id;
     const s_id = sanityFunction(id);
     if (!s_id) {
-      res.send({ success: false, message: "lütfen geçerli bir id giriniz" });
+      return res
+        .status(400)
+        .send({ success: false, message: "Lütfen geçerli bir ID giriniz" });
     }
 
-    const response = await Project.destroy({
-      where: { id: id },
-    });
+    const response = await Project.destroy({ where: { id: s_id } });
     if (response === 0) {
-      // Bu bir "iş kuralı" kontrolüdür (örneğin: böyle bir kayıt yok)
       return res
         .status(404)
         .send({ success: false, message: "Kayıt bulunamadı" });
     }
-    res.send({ success: true, message: ` id=${id}, değer silindi` });
+
+    return res.send({ success: true, message: `id=${id}, değer silindi` });
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 };
 
 module.exports = {
   getAll,
-  deleteById,
-  getById,
   addData,
+  getById,
   updateById,
+  deleteById,
 };

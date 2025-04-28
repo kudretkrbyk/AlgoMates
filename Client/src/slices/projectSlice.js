@@ -5,7 +5,7 @@ const API_URL = "http://localhost:5000/api/projects";
 
 const initialState = {
   projects: [],
-  project: {},
+  editProject: {},
   isLoading: false,
   isError: false,
   isSuccess: false,
