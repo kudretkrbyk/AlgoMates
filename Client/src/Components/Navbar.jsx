@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+export default function Navbar({ handleDarkModeToggle, darkMode }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { name: 'Ana Sayfa', path: '/' },
-    { name: 'Hizmetler', path: '/hizmetler' },
-    { name: 'Projeler', path: '/projeler' },
-    { name: 'Hakkımızda', path: '/hakkimizda' },
-    { name: 'İletişim', path: '/iletisim' }
+    { name: "Ana Sayfa", path: "/" },
+    { name: "Hizmetler", path: "/hizmetler" },
+    { name: "Projeler", path: "/projeler" },
+    { name: "Hakkımızda", path: "/hakkimizda" },
+    { name: "İletişim", path: "/iletisim" },
   ];
-
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   return (
-    <nav className="bg-gray-900 fixed w-full z-50">
+    <nav className="bg-gray-900 dark:bg-blue-200 fixed w-full z-50 border border-white">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -24,7 +31,10 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+            <Link
+              to="/"
+              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600"
+            >
               AlgoMates
             </Link>
           </motion.div>
@@ -32,6 +42,9 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
+              <button onClick={handleDarkModeToggle} className="text-white">
+                Deneme
+              </button>
               {menuItems.map((item, index) => (
                 <motion.div
                   key={index}
@@ -95,7 +108,7 @@ const Navbar = () => {
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
+          animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden"
         >
@@ -121,6 +134,4 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
-
-export default Navbar; 
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
@@ -11,10 +12,19 @@ import "./App.css";
 import Admin from "./pages/Admin";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const handleDarkModeToggle = () => {
+    setDarkMode(!darkMode);
+    console.log("Dark mode toggled:", darkMode);
+  };
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar
+          darkMode={darkMode}
+          handleDarkModeToggle={handleDarkModeToggle}
+        />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
