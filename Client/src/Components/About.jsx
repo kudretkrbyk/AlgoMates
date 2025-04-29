@@ -1,36 +1,36 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const About = () => {
   const teamMembers = [
     {
-      name: 'Ahmet Yılmaz',
-      role: 'Kurucu & CEO',
-      image: '👨‍💼',
-      description: '10+ yıllık yapay zeka ve yazılım deneyimi'
+      name: "Ahmet Yılmaz",
+      role: "Kurucu & CEO",
+      image: "👨‍💼",
+      description: "10+ yıllık yapay zeka ve yazılım deneyimi",
     },
     {
-      name: 'Ayşe Demir',
-      role: 'CTO',
-      image: '👩‍💻',
-      description: 'Machine Learning uzmanı ve yazılım mimarı'
+      name: "Ayşe Demir",
+      role: "CTO",
+      image: "👩‍💻",
+      description: "Machine Learning uzmanı ve yazılım mimarı",
     },
     {
-      name: 'Mehmet Kaya',
-      role: 'UI/UX Tasarımcı',
-      image: '🎨',
-      description: 'Kullanıcı deneyimi ve arayüz tasarımı uzmanı'
+      name: "Mehmet Kaya",
+      role: "UI/UX Tasarımcı",
+      image: "🎨",
+      description: "Kullanıcı deneyimi ve arayüz tasarımı uzmanı",
     },
     {
-      name: 'Zeynep Şahin',
-      role: 'Veri Bilimci',
-      image: '📊',
-      description: 'Veri analizi ve yapay zeka modelleme uzmanı'
-    }
+      name: "Zeynep Şahin",
+      role: "Veri Bilimci",
+      image: "📊",
+      description: "Veri analizi ve yapay zeka modelleme uzmanı",
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-20">
+    <div className="min-h-screen bg-gradient-to-b  bg-yellow-600 dark:from-gray-900 dark:to-black dark:text-white py-20 text-blue-500">
       <div className="container mx-auto px-4">
         {/* Hakkımızda Bölümü */}
         <motion.div
@@ -43,8 +43,9 @@ const About = () => {
             Hakkımızda
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            AlgoMates olarak, yapay zeka teknolojilerini kullanarak modern ve yenilikçi web çözümleri sunuyoruz.
-            2020 yılından bu yana, müşterilerimize en iyi hizmeti vermek için çalışıyoruz.
+            AlgoMates olarak, yapay zeka teknolojilerini kullanarak modern ve
+            yenilikçi web çözümleri sunuyoruz. 2020 yılından bu yana,
+            müşterilerimize en iyi hizmeti vermek için çalışıyoruz.
           </p>
         </motion.div>
 
@@ -52,20 +53,21 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
             {
-              title: 'Yenilikçilik',
-              description: 'Sürekli gelişen teknolojileri takip ediyor ve uyguluyoruz',
-              icon: '🚀'
+              title: "Yenilikçilik",
+              description:
+                "Sürekli gelişen teknolojileri takip ediyor ve uyguluyoruz",
+              icon: "🚀",
             },
             {
-              title: 'Kalite',
-              description: 'En yüksek standartlarda çözümler sunuyoruz',
-              icon: '✨'
+              title: "Kalite",
+              description: "En yüksek standartlarda çözümler sunuyoruz",
+              icon: "✨",
             },
             {
-              title: 'Güven',
-              description: 'Müşterilerimizle güvene dayalı ilişkiler kuruyoruz',
-              icon: '🤝'
-            }
+              title: "Güven",
+              description: "Müşterilerimizle güvene dayalı ilişkiler kuruyoruz",
+              icon: "🤝",
+            },
           ].map((value, index) => (
             <motion.div
               key={index}
@@ -114,4 +116,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

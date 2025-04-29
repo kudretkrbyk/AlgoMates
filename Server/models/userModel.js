@@ -6,10 +6,10 @@ const getUserByUsername = async (username) => {
   return user;
 };
 
-const createUser = async (username, hashedPassword) => {
-  console.log("Creating user: model", username, hashedPassword);
+const createUser = async (userName, hashedPassword) => {
+  console.log("Creating user: model", userName, hashedPassword);
   await Kullanici.create({
-    username: username,
+    username: userName,
     userpassword: hashedPassword,
   });
   console.log("burası geldi");
