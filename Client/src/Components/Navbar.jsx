@@ -21,7 +21,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white/80 dark:bg-gray-100/10 backdrop-blur-md shadow-sm fixed w-full z-50 border-b border-gray-200 dark:border-gray-800">
+    <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm fixed w-full z-50 border-b border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -64,6 +64,7 @@ export default function Navbar() {
             >
               Ücretsiz Danışmanlık
             </motion.button>
+
             {/* Dark mode switch */}
             <button
               onClick={() => dispatch(toggleDarkMode())}
@@ -113,6 +114,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
       {/* Mobile Menu */}
       {isOpen && (
         <motion.div
