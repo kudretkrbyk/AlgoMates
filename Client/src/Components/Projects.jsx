@@ -86,22 +86,22 @@ export default function Projects() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4 transform group-hover:scale-105 transition"
+                    className="w-full h-48 object-cover rounded-lg  transform group-hover:scale-105 transition"
                   />
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                  <h3 className="text-2xl font-bold py-2">{project.title}</h3>
                   <p className="text-gray-700 dark:text-gray-300">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-300 rounded-xl p-4">
+                <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition duration-300 rounded-xl p-16">
                   {project.liveview && (
                     <a
                       href={project.liveview}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full transition"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 p-2 rounded-full transition"
                       aria-label={`${project.title} Live Site`}
                     >
                       Live Site
@@ -112,7 +112,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-full transition"
+                      className="bg-gray-700 hover:bg-gray-600 text-white px-6 p-2 rounded-full transition"
                       aria-label={`${project.title} GitHub`}
                     >
                       GitHub
