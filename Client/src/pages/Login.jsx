@@ -21,7 +21,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/Admin");
     }
 
     dispatch(reset());

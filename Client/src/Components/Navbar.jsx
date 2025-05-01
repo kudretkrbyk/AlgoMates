@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { MdOutlineDarkMode } from "react-icons/md";
-import { CiLight } from "react-icons/ci";
+import { CiLight, CiLogout } from "react-icons/ci";
+
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { toggleDarkMode } from "../slices/themeSlice";
 import { useSelector } from "react-redux";
+import { logout } from "../slices/auth/authSlice";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+  const user = useSelector((state) => state.auth.user);
+  const isLoggedIn = Boolean(user);
 
   const menuItems = [
     { name: "Ana Sayfa", path: "/" },
@@ -64,6 +68,14 @@ export default function Navbar() {
             >
               Ücretsiz Danışmanlık
             </motion.button>
+            {isLoggedIn && (
+              <button
+                onClick={() => dispatch(logout())}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-gray-600 transition-colors border border-gray-300 dark:border-gray-600"
+              >
+                <CiLogout className="" />
+              </button>
+            )}
 
             {/* Dark mode switch */}
             <button

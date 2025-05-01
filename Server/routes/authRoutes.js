@@ -45,7 +45,8 @@ router.post(
   handleValidationErrors,
   login
 );
-
+//Bu rota token doğrulama için kullanılacak
+// ✅ Token doğrulama middleware'i kullanıldı
 router.get("/login", verifyToken, (req, res) => {
   res.json({ message: "Access to denemetablo granted!", user: req.user });
 });

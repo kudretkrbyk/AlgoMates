@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    res.sendStatus(403);
+    return res.status(403).json({ message: "Geçersiz token" });
   }
 };
 module.exports = { verifyToken };

@@ -2,8 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./AuthServices";
 
 const user = JSON.parse(localStorage.getItem("user"));
+const expire = localStorage.getItem("expireTime");
 const initialState = {
   user: user ? user : null,
+  expireTime: expire ? Number(expire) : null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -28,7 +30,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const login = createAsyncThunk("auth/login", async (data, thunkAPI) => {
-  console.log(data);
+  console.log("authslice", data);
   try {
     console.log(data);
     return await authService.login(data);
@@ -79,9 +81,8 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = payload;
+        state.expireTime = Number(localStorage.getItem("expireTime"));
         state.message = "User logged in successfully!";
-        const expireTime = new Date().getTime() + 1 * 60 * 60 * 1000;
-        localStorage.setItem("expireTime", expireTime);
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -95,6 +96,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = null;
+        state.expireTime = null; // ✅ süresini sıfırla
         state.message = "User logged out successfully!";
       })
       .addCase(logout.rejected, (state, { payload }) => {

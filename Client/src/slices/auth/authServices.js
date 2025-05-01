@@ -18,7 +18,9 @@ const login = async (data) => {
     console.log("Auth Services: Yanıt alındı", response);
 
     if (response.data) {
+      const expireTime = new Date().getTime() + 60 * 60 * 1000;
       localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem("expireTime", expireTime); // ✅ aynı yerde, daha temiz
     }
 
     return response.data;
@@ -33,6 +35,7 @@ const login = async (data) => {
 
 const logout = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("expireTime");
 };
 const authServices = {
   register,
