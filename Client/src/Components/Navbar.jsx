@@ -60,14 +60,7 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 shadow-lg"
-            >
-              Ücretsiz Danışmanlık
-            </motion.button>
+
             {isLoggedIn && (
               <button
                 onClick={() => dispatch(logout())}

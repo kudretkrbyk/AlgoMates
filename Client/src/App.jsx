@@ -12,10 +12,18 @@ import Contact from "./Components/Contact";
 import "./App.css";
 import ProtectedRoute from "./Components/protedted/ProtectedRoute";
 import Admin from "./pages/Admin";
+import ContactModal from "./Components/ContactModal";
+import ContactModalForm from "./Components/ContactModalForm";
+import { useState } from "react";
 
 import Login from "./pages/Login";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  };
   //localStorage.removeItem("user");
   const darkMode = useSelector((state) => state.theme.darkMode);
 
@@ -31,6 +39,10 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
+        <ContactModal isOpen={showModal} onClose={() => setShowModal(false)}>
+          {" "}
+          <ContactModalForm />{" "}
+        </ContactModal>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -50,7 +62,7 @@ function App() {
             />
           </Routes>
         </main>
-        <Footer />
+        <Footer handleShowModal={handleShowModal} />
       </div>
     </Router>
   );

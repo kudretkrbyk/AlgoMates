@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+export default function Footer({ handleShowModal }) {
   return (
     <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white py-12">
       <div className="container mx-auto px-4">
@@ -88,8 +88,21 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {/*ÜCretsiz danışmanlık butonu!!!! */}
+      <div>
+        {" "}
+        <motion.button
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{
+            repeat: Infinity,
+            duration: 1.5,
+          }}
+          className="fixed bottom-10 right-10 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 shadow-lg"
+          onClick={handleShowModal}
+        >
+          Ücretsiz Danışmanlık
+        </motion.button>
+      </div>
     </footer>
   );
-};
-
-export default Footer;
+}
