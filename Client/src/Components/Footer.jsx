@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { TbMessageChatbot } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 export default function Footer({ handleShowModal }) {
@@ -92,16 +93,17 @@ export default function Footer({ handleShowModal }) {
       <div>
         {" "}
         <motion.button
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{
-            repeat: Infinity,
-            duration: 1.5,
-          }}
-          className="fixed bottom-10 right-10 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 shadow-lg"
-          onClick={handleShowModal}
-        >
-          Ücretsiz Danışmanlık
-        </motion.button>
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{
+          repeat: Infinity,
+          duration: 1.5,
+        }}
+        className="fixed bottom-5 right-7 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full transition duration-300 shadow-lg"
+        onClick={handleShowModal}
+      >
+        <TbMessageChatbot size={24} />
+      </motion.button>
+      
       </div>
     </footer>
   );

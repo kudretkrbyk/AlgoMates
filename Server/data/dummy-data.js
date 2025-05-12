@@ -1,6 +1,7 @@
 const Contact = require("../models/contact");
 const User = require("../models/users");
 const Projects = require("../models/projects");
+const bcrypt = require('bcrypt');
 
 async function populate() {
   try {
@@ -15,17 +16,17 @@ async function populate() {
     await User.bulkCreate([
       {
         username: "Kudret Kırbıyık",
-        userpassword: "123456",
+        userpassword: bcrypt.hashSync("123456", 10),
         isadmin: true,
       },
       {
         username: "Gökhan Topdanış",
-        userpassword: "12345",
+        userpassword: bcrypt.hashSync("12345", 10),
         isadmin: true,
       },
       {
         username: "Kenan Ünal",
-        userpassword: "1234",
+        userpassword: bcrypt.hashSync("1234", 10),
         isadmin: true,
       },
     ]);

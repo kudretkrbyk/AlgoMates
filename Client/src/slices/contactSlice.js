@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../api/axiosIntance"; // token'lı axios burada olsun
 
-const API_URL = "http://localhost:5000/api/contacts";
+const API_URL = "https://algomates.kudretkrbyk.com.tr/api/contacts";
 
 const initialState = {
   contactTable: [],
