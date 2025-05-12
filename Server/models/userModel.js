@@ -11,6 +11,7 @@ const createUser = async (userName, hashedPassword) => {
   await Kullanici.create({
     username: userName,
     userpassword: hashedPassword,
+    isadmin: false,
   });
   console.log("burası geldi");
 };
