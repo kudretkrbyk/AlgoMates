@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const API_URL = "https://algomates.kudretkrbyk.com.tr/api/projects";
-
+import { BASE_URL } from "./auth/contants";
+const API_URL = BASE_URL + "/projects";
+console.log("api url", API_URL);
 const initialState = {
   projects: [],
   editProject: {},
@@ -11,14 +11,23 @@ const initialState = {
   isSuccess: false,
   message: "",
 };
-
+// Ortak config fonksiyonu
+const getConfig = (state) => {
+  const token = state.auth?.user?.token;
+  return {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+};
 // GET ALL
 export const fetchProjects = createAsyncThunk(
   "projects/fetchAll",
   async (_, thunkAPI) => {
     try {
-      console.log("fetchProjects çalıştı"); // bu log burada olmalı
-      const res = await axios.get(API_URL);
+      const config = getConfig(thunkAPI.getState());
+      const res = await axios.get(API_URL, config);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -33,7 +42,8 @@ export const fetchProjectById = createAsyncThunk(
   "projects/fetchById",
   async (id, thunkAPI) => {
     try {
-      const res = await axios.get(`${API_URL}/${id}`);
+      const config = getConfig(thunkAPI.getState());
+      const res = await axios.get(`${API_URL}/${id}`, config);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Proje bulunamadı.", error);
@@ -46,7 +56,8 @@ export const addProject = createAsyncThunk(
   "projects/add",
   async (data, thunkAPI) => {
     try {
-      const res = await axios.post(API_URL, data);
+      const config = getConfig(thunkAPI.getState());
+      const res = await axios.post(API_URL, data, config);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Proje ekleme başarısız.", error);
@@ -59,7 +70,8 @@ export const updateProject = createAsyncThunk(
   "projects/update",
   async (data, thunkAPI) => {
     try {
-      const res = await axios.put(`${API_URL}/${data.id}`, data);
+      const config = getConfig(thunkAPI.getState());
+      const res = await axios.put(`${API_URL}/${data.id}`, data, config);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Proje güncelleme başarısız.", error);
@@ -72,7 +84,9 @@ export const deleteProject = createAsyncThunk(
   "projects/delete",
   async (id, thunkAPI) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      const config = getConfig(thunkAPI.getState());
+
+      await axios.delete(`${API_URL}/${id}`, config);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue("Proje silinemedi.", error);

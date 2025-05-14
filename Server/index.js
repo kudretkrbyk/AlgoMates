@@ -18,7 +18,7 @@ app.use("/api/projects", projectsRoutes);
 app.use("/api/contacts", contactRoutes);
 
 (async () => {
-  await sequelize.sync({ force: true }); // { force: true } yapma, verileri siler
+  await sequelize.sync({ force: false }); // { force: true } yapma, verileri siler
   await dummyData();
 })();
 
