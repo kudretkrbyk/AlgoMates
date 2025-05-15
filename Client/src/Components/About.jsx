@@ -7,7 +7,7 @@ const About = () => {
       name: "Kudret Kırbıyık",
       role: "Kurucu & CEO",
       image: "👨‍💼",
-      description: "10+ yıllık yapay zeka ve yazılım deneyimi",
+      description: "Fullstack Developer",
     },
     {
       name: "Gökhan Topdanış",
@@ -17,11 +17,10 @@ const About = () => {
     },
     {
       name: "Kenan Ünal",
-      role: "Veri Bilimci",
+      role: "CTO",
       image: "📊",
-      description: "Veri analizi ve yapay zeka modelleme uzmanı",
+      description: "Fullstack Developer",
     },
-    
   ];
 
   return (
@@ -95,7 +94,12 @@ const About = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Alanında uzman ekibimizle sizlere en iyi hizmeti sunuyoruz
           </p>
-          <div className={`grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-${Math.min(teamMembers.length, 4)}`}>
+          <div
+            className={`grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-${Math.min(
+              teamMembers.length,
+              4
+            )}`}
+          >
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
