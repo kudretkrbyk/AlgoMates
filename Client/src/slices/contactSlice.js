@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../api/axiosIntance"; // token'lı axios burada olsun
 
-const API_URL = import.meta.env.VITE_API_URL+'contacts';
+const API_URL = import.meta.env.VITE_API_URL + "/contacts";
+console.log("contact", API_URL);
+
 const initialState = {
   contactTable: [],
   editContact: {},
