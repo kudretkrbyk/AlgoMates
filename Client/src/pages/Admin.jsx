@@ -170,6 +170,7 @@ export default function Admin() {
             className="bg-gray-800 p-6 rounded-lg relative hover:bg-gray-700 transition"
           >
             <img
+              loading="lazy"
               src={project.image}
               alt={project.title}
               className="w-full h-40 object-cover rounded-lg mb-4"

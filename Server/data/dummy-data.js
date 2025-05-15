@@ -1,7 +1,7 @@
 const Contact = require("../models/contact");
 const User = require("../models/users");
 const Projects = require("../models/projects");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 async function populate() {
   try {
