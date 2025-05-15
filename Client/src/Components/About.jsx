@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
   const teamMembers = [
@@ -29,6 +30,10 @@ const About = () => {
 
  text-gray-900 dark:text-white py-20"
     >
+      <Helmet>
+        <title>Globalgomates Hakkımızda </title>
+        <meta name="description" content="Globalgomates Hakkımızda" />
+      </Helmet>
       <div className="container mx-auto px-4">
         {/* Hakkımızda Bölümü */}
         <motion.div

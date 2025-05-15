@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { addContact, resetContactState } from "../slices/contactSlice";
+import { Helmet } from "react-helmet-async";
 
 export default function Contact() {
   const dispatch = useDispatch();
@@ -35,6 +36,13 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-black py-20 text-gray-900 dark:text-white">
+      <Helmet>
+        <title>Globalgomates İletişim </title>
+        <meta
+          name="description"
+          content="Globalgomates Bizimle İletişime Geçin!"
+        />
+      </Helmet>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

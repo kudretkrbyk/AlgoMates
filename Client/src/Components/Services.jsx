@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const services = [
@@ -50,6 +51,13 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-gray-200 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white py-20">
+      <Helmet>
+        <title>Globalgomates Servislerimiz </title>
+        <meta
+          name="description"
+          content="Yapay zeka destekli sunduğumuz web servisleri"
+        />
+      </Helmet>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchProjects } from "../slices/projectSlice";
+import { Helmet } from "react-helmet-async";
 
 export default function Projects() {
   const { projects, isLoading, isSuccess } = useSelector(
@@ -36,6 +37,13 @@ export default function Projects() {
   if (isSuccess) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-gray-200 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white py-20">
+        <Helmet>
+          <title>Globalgomates Projelerimiz </title>
+          <meta
+            name="description"
+            content="Yapay zeka destekli sunduğumuz web projeleri"
+          />
+        </Helmet>
         <div className="container mx-auto px-4">
           {/* Başlık */}
           <motion.div

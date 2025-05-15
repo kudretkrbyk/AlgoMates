@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { login, reset } from "../slices/auth/authSlice";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -76,7 +75,7 @@ export default function Login() {
                   htmlFor="text"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
                 >
-                  E-posta
+                  Kullanıcı adı
                 </label>
                 <input
                   id="text"
@@ -85,7 +84,7 @@ export default function Login() {
                   onChange={(e) => setUserName(e.target.value)}
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
-                  placeholder="E-posta adresinizi girin"
+                  placeholder="Kullanıcı adı girin"
                 />
               </div>
 
