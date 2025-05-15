@@ -21,12 +21,12 @@ const Project = sequelize.define(
       allowNull: false,
     },
     liveview: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     github: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

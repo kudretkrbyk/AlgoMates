@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 import { BASE_URL } from "./auth/contants";
 const API_URL = BASE_URL + "/projects";
 console.log("api url", API_URL);
+
 const initialState = {
   projects: [],
   editProject: {},
@@ -26,8 +28,10 @@ export const fetchProjects = createAsyncThunk(
   "projects/fetchAll",
   async (_, thunkAPI) => {
     try {
+
       const config = getConfig(thunkAPI.getState());
       const res = await axios.get(API_URL, config);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

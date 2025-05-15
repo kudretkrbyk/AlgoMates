@@ -4,29 +4,24 @@ import { motion } from "framer-motion";
 const About = () => {
   const teamMembers = [
     {
-      name: "Ahmet Yılmaz",
+      name: "Kudret Kırbıyık",
       role: "Kurucu & CEO",
       image: "👨‍💼",
       description: "10+ yıllık yapay zeka ve yazılım deneyimi",
     },
     {
-      name: "Ayşe Demir",
+      name: "Gökhan Topdanış",
       role: "CTO",
       image: "👩‍💻",
       description: "Machine Learning uzmanı ve yazılım mimarı",
     },
     {
-      name: "Mehmet Kaya",
-      role: "UI/UX Tasarımcı",
-      image: "🎨",
-      description: "Kullanıcı deneyimi ve arayüz tasarımı uzmanı",
-    },
-    {
-      name: "Zeynep Şahin",
+      name: "Kenan Ünal",
       role: "Veri Bilimci",
       image: "📊",
       description: "Veri analizi ve yapay zeka modelleme uzmanı",
     },
+    
   ];
 
   return (
@@ -48,7 +43,7 @@ const About = () => {
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             AlgoMates olarak, yapay zeka teknolojilerini kullanarak modern ve
-            yenilikçi web çözümleri sunuyoruz. 2020 yılından bu yana,
+            yenilikçi web çözümleri sunuyoruz. 2024 yılından bu yana,
             müşterilerimize en iyi hizmeti vermek için çalışıyoruz.
           </p>
         </motion.div>
@@ -100,7 +95,7 @@ const About = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Alanında uzman ekibimizle sizlere en iyi hizmeti sunuyoruz
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className={`grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-${Math.min(teamMembers.length, 4)}`}>
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
