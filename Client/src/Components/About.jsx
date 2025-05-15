@@ -21,6 +21,12 @@ const About = () => {
       image: "📊",
       description: "Fullstack Developer",
     },
+    {
+      name: "Kenan Ünal",
+      role: "CTO",
+      image: "📊",
+      description: "Fullstack Developer",
+    },
   ];
 
   return (
