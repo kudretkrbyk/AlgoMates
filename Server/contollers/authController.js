@@ -40,6 +40,8 @@ const login = async (req, res) => {
 
     const match = await bcrypt.compare(password, user.userpassword);
     if (!match) return res.status(401).json({ error: "Invalid credentials." });
+    if (!user.isadmin)
+      return res.status(401).json({ error: "Invalid credentials." });
 
     const token = jwt.sign(
       { id: user.id, username: user.username },
