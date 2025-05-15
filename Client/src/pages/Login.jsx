@@ -99,7 +99,7 @@ export default function Login() {
                 <div className="relative">
                   <input
                     id="password"
-                    type={showPassword ? "text" : "password"}
+                    type="password"
                     value={userPassword}
                     onChange={(e) => setUserPassword(e.target.value)}
                     required
@@ -110,13 +110,7 @@ export default function Login() {
                     type="button"
                     onClick={toggleShowPassword}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white focus:outline-none"
-                  >
-                    {showPassword ? (
-                      <EyeOffIcon className="h-5 w-5" />
-                    ) : (
-                      <EyeIcon className="h-5 w-5" />
-                    )}
-                  </button>
+                  ></button>
                 </div>
               </div>
 
@@ -128,12 +122,6 @@ export default function Login() {
                   />
                   Beni hatırla
                 </label>
-                <Link
-                  to="/forgot-password"
-                  className="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium"
-                >
-                  Şifremi unuttum
-                </Link>
               </div>
 
               <div>
