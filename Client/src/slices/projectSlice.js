@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "https://algomates.kudretkrbyk.com.tr/api/projects";
-
+const API_URL = import.meta.env.VITE_API_URL+'projects'; // VITE_API_URL ortam değişkenini kullanarak API URL'sini alıyoruz
 const initialState = {
   projects: [],
   editProject: {},
@@ -17,7 +16,7 @@ export const fetchProjects = createAsyncThunk(
   "projects/fetchAll",
   async (_, thunkAPI) => {
     try {
-      console.log("fetchProjects çalıştı"); // bu log burada olmalı
+      //console.log("fetchProjects çalıştı"); // bu log burada olmalı
       const res = await axios.get(API_URL);
       return res.data;
     } catch (error) {

@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../api/axiosIntance"; // token'lı axios burada olsun
 
-const API_URL = "https://algomates.kudretkrbyk.com.tr/api/contacts";
-
+const API_URL = import.meta.env.VITE_API_URL+'contacts';
 const initialState = {
   contactTable: [],
   editContact: {},
@@ -46,7 +45,7 @@ export const addContact = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(API_URL, data);
-      console.log("Contact added:", response.data); // Başarılı ekleme sonrası log
+      //console.log("Contact added:", response.data); // Başarılı ekleme sonrası log
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

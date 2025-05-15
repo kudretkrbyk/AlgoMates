@@ -9,7 +9,7 @@ export default function Projects() {
     (state) => state.projects
   );
   const dispatch = useDispatch();
-  console.log("projects", projects);
+  //console.log("projects", projects);
 
   const [activeFilter, setActiveFilter] = useState("Tümü");
 
@@ -44,7 +44,7 @@ export default function Projects() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-300 dark:to-purple-400">
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-300 dark:to-purple-400">
               Projelerimiz
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300">

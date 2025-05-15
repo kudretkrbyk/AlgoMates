@@ -38,8 +38,8 @@ async function populate() {
           "A personal website showcasing my projects, skills, and resume.",
         image:
           "https://images.pexels.com/photos/160107/pexels-photo-160107.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "E-commerce Store",
@@ -48,8 +48,8 @@ async function populate() {
           "An online store with user authentication, shopping cart, and payment integration.",
         image:
           "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Blog Platform",
@@ -58,8 +58,8 @@ async function populate() {
           "A full-featured blog system where users can write, edit, and comment on posts.",
         image:
           "https://images.pexels.com/photos/261662/pexels-photo-261662.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Weather Forecast App",
@@ -68,8 +68,8 @@ async function populate() {
           "An app showing real-time weather updates and 7-day forecasts using OpenWeather API.",
         image:
           "https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Task Manager App",
@@ -78,8 +78,8 @@ async function populate() {
           "A simple to-do app with user authentication and real-time task updates.",
         image:
           "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Recipe Finder App",
@@ -88,8 +88,8 @@ async function populate() {
           "An app to search and display recipes with ingredients and cooking instructions.",
         image:
           "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Fitness Tracker",
@@ -98,8 +98,8 @@ async function populate() {
           "A web app to track workouts, calories, and progress over time.",
         image:
           "https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Movie Database App",
@@ -108,8 +108,8 @@ async function populate() {
           "An app that allows users to search for movies and view detailed information.",
         image:
           "https://images.pexels.com/photos/1040160/pexels-photo-1040160.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Travel Blog Website",
@@ -118,8 +118,8 @@ async function populate() {
           "A modern blog site for sharing travel experiences and guides.",
         image:
           "https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
       {
         title: "Online Education Platform",
@@ -128,8 +128,8 @@ async function populate() {
           "A platform where users can sign up for courses and track their learning progress.",
         image:
           "https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=800",
-        liveview: true,
-        github: true,
+        liveview: "https://github.com/kudretkrbyk",
+        github: "https://github.com/kudretkrbyk",
       },
     ]);
   } catch (error) {

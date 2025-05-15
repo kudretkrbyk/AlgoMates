@@ -73,7 +73,7 @@ export default function Login() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="text"
                   className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
                 >
                   E-posta
