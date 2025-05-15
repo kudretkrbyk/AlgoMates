@@ -28,7 +28,6 @@ export const fetchProjects = createAsyncThunk(
   "projects/fetchAll",
   async (_, thunkAPI) => {
     try {
-
       const config = getConfig(thunkAPI.getState());
       const res = await axios.get(API_URL, config);
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer({ handleShowModal }) {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white py-12">
+    <footer className=" min-h-[200px] bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo ve Açıklama */}
@@ -93,17 +93,16 @@ export default function Footer({ handleShowModal }) {
       <div>
         {" "}
         <motion.button
-        animate={{ scale: [1, 1.15, 1] }}
-        transition={{
-          repeat: Infinity,
-          duration: 1.5,
-        }}
-        className="fixed bottom-5 right-7 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full transition duration-300 shadow-lg"
-        onClick={handleShowModal}
-      >
-        <TbMessageChatbot size={24} />
-      </motion.button>
-      
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{
+            repeat: Infinity,
+            duration: 1.5,
+          }}
+          className="fixed bottom-5 right-7 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full transition duration-300 shadow-lg"
+          onClick={handleShowModal}
+        >
+          <TbMessageChatbot size={24} />
+        </motion.button>
       </div>
     </footer>
   );

@@ -89,7 +89,7 @@ const Home = () => {
         {/* İstatistikler */}
         <section className="bg-gray-100 dark:bg-gray-800 py-20">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center ">
               {[
                 { number: "100+", label: "Tamamlanan Proje" },
                 { number: "50+", label: "Mutlu Müşteri" },
@@ -97,12 +97,13 @@ const Home = () => {
                 { number: "24/7", label: "Teknik Destek" },
               ].map((stat, index) => (
                 <motion.div
+                  className=" shadow-md rounded-xl p-4 "
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
-                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 ">
                     {stat.number}
                   </div>
                   <div className="text-gray-700 dark:text-gray-300">
