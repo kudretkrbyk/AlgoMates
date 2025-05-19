@@ -174,4 +174,4 @@ const projectSlice = createSlice({
 });
 
 export const { resetProjectState } = projectSlice.actions;
-export default projectSlice.reducer;
+export default projectSlice.reducerd;
